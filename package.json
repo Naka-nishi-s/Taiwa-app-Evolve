@@ -1,11 +1,12 @@
 {
-  "name": "taiwa-evo",
-  "version": "1.0.0",
-  "description": "",
+  "name": "taiwa-evolve",
+  "version": "1.0.3",
+  "description": "対話でReactとNextのひな形を作成できるパッケージ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",

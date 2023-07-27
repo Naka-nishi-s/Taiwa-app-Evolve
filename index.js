@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { exec } from "child_process";
 import figlet from "figlet";
 import inquirer from "inquirer";
@@ -7,7 +9,7 @@ import inquirer from "inquirer";
  */
 const createAA = () => {
   return new Promise((resolve, reject) => {
-    figlet("Konnitiha", (err, data) => {
+    figlet("Yahho!", (err, data) => {
       if (err) {
         reject();
         return;
@@ -31,7 +33,7 @@ const main = async () => {
       type: "list",
       name: "installType",
       message: "Select the packages",
-      choices: ["React", "Next", "Next + tailwind css"],
+      choices: ["React", "Next"],
     },
     {
       type: "input",
@@ -56,8 +58,41 @@ const main = async () => {
     });
   };
 
-  // 対話結果によってインストール対象を分岐
+  /**
+   * 対話結果によってインストール対象を分岐
+   */
+
+  if (answer.installType === "React") {
+    // React選択のとき
+    try {
+      // テンプレートをGit clone
+      await execPromise(
+        `git clone https://github.com/Naka-nishi-s/Template-place-React.git ${answer.projectName}`
+      );
+
+      console.log("クローン完了");
+
+      // ディレクトリ移動
+      process.chdir(answer.projectName);
+      console.log("移動");
+
+      // オリジン削除
+      await execPromise("git remote remove origin");
+      console.log("オリジン削除完了");
+
+      // パッケージのインストール
+      await execPromise("npm i");
+      console.log("パッケージインストール完了");
+
+      console.log("すべての手順が完了しました。");
+      console.log("Enjoy Hacking!");
+    } catch (err) {
+      console.error(`Failed... Err:${err.message}`);
+    }
+  }
+
   if (answer.installType === "Next") {
+    // Next選択のとき
     try {
       // テンプレートをGit clone
       await execPromise(
@@ -77,6 +112,9 @@ const main = async () => {
       // パッケージのインストール
       await execPromise("npm i");
       console.log("パッケージインストール完了");
+
+      console.log("すべての手順が完了しました。");
+      console.log("Enjoy Hacking!");
     } catch (err) {
       console.error(`Failed... Err:${err.message}`);
     }
