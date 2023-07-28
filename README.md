@@ -17,3 +17,8 @@ React18 と Next13 に対応しています。
 2. React, Next のどちらをインストールするか聞かれるので、好きな方を選択します。
 
 3. Enjoy Hacking!が出たらセットアップ完了です。
+
+## ひな形置き場
+Reactは[こちら](https://github.com/Naka-nishi-s/Template-place-React)
+
+Nextは[こちら](https://github.com/Naka-nishi-s/Template-place-Next)
